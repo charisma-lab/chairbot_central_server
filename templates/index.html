@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ChairBot</title>
+  <!-- Charisma Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='chairbot/img/favicon.ico') }}" />
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/bootstrap.min.css') }}">
+
+  <!-- Custom fonts -->
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='chairbot/css/custom.css') }}">
+    <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='dist/jquery/jquery.min.js') }}"> </script>
+  <script src="{{ url_for('static', filename='dist/js/bootstrap.bundle.min.js') }}"> </script>
+   <!-- robotwebtools scripts -->
+  <script type="text/javascript" src="{{ url_for('static', filename='dist/js/eventemitter2.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='dist/js/roslib.min.js')}}"></script>
+  <!-- Custom scripts -->
+  <script src="{{ url_for('static', filename='chairbot/js/switch.js') }}"> </script>
+  <script src="{{ url_for('static', filename='chairbot/js/motion.js') }}"> </script>
+</head>
+<body>
+	<img id="camera-frame" src="{{ url_for('video_feed') }}" style="min-height: 100%; min-width: 100%; object-fit: cover;">
+	<div class="content" style="position: fixed;bottom: 0; background: rgba(0, 0, 0, 0.5);color: #f1f1f1; width: 100%; padding: 20px;">
+		<h3> You are driving: 
+          <span id="Toggle01"></span>
+          <span id="Toggle02"></span>
+          <span id="Toggle03"></span>
+          <span id="Toggle04"></span>
+        </h3>
+		<table>
+          <tbody>
+            <tr>
+              <td>
+                <label class="switch" style="">
+                  <input type="checkbox" id="Switch01" onclick="toggle_chair01()" style="">
+                  <span class="slider round" style="padding-right:1em">Chair 1</span>
+                </label>
+              </td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="Switch02" onclick="toggle_chair02()">
+                  <span class="slider round" style="padding-right:1em">Chair 2</span>
+                </label>
+              </td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="Switch03" onclick="toggle_chair03()">
+                  <span class="slider round" style="padding-right:1em">Chair 3</span>
+                </label>
+              </td>
+              <td>
+                <label class="switch" style="">
+                  <input type="checkbox" id="Switch04" onclick="toggle_chair04()" style="">
+                  <span class="slider round" style="padding-right:1em">Chair 4</span>
+                </label>
+              </td>
+              <td class="checkbox">
+              	<label><input type="checkbox" id="SwitchAll" onclick="toggle_all()"> Select All Chairs</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onclick="forward()">Forward</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onclick="backword()">Backword</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <span>Right</span>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm"onclick="rotate90right()"> 90</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onclick="rotate180right()">180</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm"onclick="rotate270right()">270</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm"onclick="rotate360right()">360</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <span>Left</span>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onclick="rotate90left()"> 90</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onclick="rotate180left()">180</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm"onclick="rotate270left()">270</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onclick="rotate360left()">360</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+	</div>
+</body>
+</html>
