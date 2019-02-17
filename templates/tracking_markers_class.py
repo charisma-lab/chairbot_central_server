@@ -9,7 +9,7 @@ import math
 class TrackingCamera(object):
     def __init__(self):
         # USB-Connected Camera
-    	self.cap = cv2.VideoCapture(0)
+    	self.cap = cv2.VideoCapture(1)
 
         # Fiducial Marker Dictionary
         self.dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)

@@ -20,8 +20,6 @@ Reading from the GoPro Camera ~!! And Publishing to the ChairBots!
 Place markers in front of the camera to start reading:
 """
 
-
-
 def mark_handler():
     global marker_pose_1
     global marker_pose_2

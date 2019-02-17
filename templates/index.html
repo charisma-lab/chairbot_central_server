@@ -27,7 +27,10 @@
   <script src="{{ url_for('static', filename='chairbot/js/motion.js') }}"> </script>
 </head>
 <body>
-	<img id="camera-frame" src="{{ url_for('video_feed') }}" style="min-height: 100%; min-width: 100%; object-fit: cover;">
+	
+  <img id="camera-frame" src="{{ url_for('video_feed') }}" style="min-height: 100%; min-width: 100%; object-fit: cover;">
+
+
 	<div class="content" style="position: fixed;bottom: 0; background: rgba(0, 0, 0, 0.5);color: #f1f1f1; width: 100%; padding: 20px;">
 		<h3> You are driving: 
           <span id="Toggle01"></span>
@@ -72,11 +75,18 @@
           <tbody>
             <tr>
               <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="forward()">Forward</button>
+                <button type="button" class="btn btn-primary btn-sm" onmousedown="forward()"                   onmouseup="stop()">Forward</button>
               </td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="backword()">Backword</button>
+                <button type="button" class="btn btn-primary btn-sm"  onmousedown="backword()" onmouseup="stop()">Backward</button>
               </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onmousedown="turnRight()" onmouseup="stop()">Right</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm" onmousedown="turnLeft()" onmouseup="stop()">Left</button>
+              </td>
+              <td>
             </tr>
           </tbody>
         </table>
@@ -118,7 +128,7 @@
             </tr>
           </tbody>
         </table>
-        <hr>
+        <hr> 
 	</div>
 </body>
 </html>

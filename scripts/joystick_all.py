@@ -45,10 +45,11 @@ def joy_handler(ps):
   allB = Buttons[4]
 
   if (allB):
-    Flag1 = False
-    Flag2 = False
-    Flag3 = False
-    Flag4 = False
+    print 'Buttons[4] \n allB'
+    Flag1 = True
+    Flag2 = True
+    Flag3 = True
+    Flag4 = True
     Flag5 = True
 
   elif ((last_1==(-0.0) or last_1==1) and now_1==1):
@@ -84,7 +85,13 @@ def joy_handler(ps):
   last_2=now_2
 
 def send_commands(ps):
-  if (Flag1):
+  if (Flag5):
+    pubjoy01.publish(ps)
+    pubjoy02.publish(ps)
+    pubjoy03.publish(ps)
+    pubjoy04.publish(ps)
+    print "Publishing to all"
+  elif (Flag1):
     pubjoy01.publish(ps)
     print "Publishing to 1"
   elif Flag2:
@@ -96,14 +103,8 @@ def send_commands(ps):
   elif (Flag4):
     pubjoy04.publish(ps)
     print "Publishing to 4"
-  elif (Flag5):
-    pubjoy01.publish(ps)
-    pubjoy02.publish(ps)
-    pubjoy03.publish(ps)
-    pubjoy04.publish(ps)
-    print "Publishing to 5"
 
-  print "  Chair 1:",Flag1,"\n Chair 2:",Flag2,"\n Chair 3:",Flag3,"\n Chair 4:",Flag4,"\n Chair 5:",Flag5,"\n"
+  print " Chair 1:",Flag1,"\n Chair 2:",Flag2,"\n Chair 3:",Flag3,"\n Chair 4:",Flag4,"\n All:",Flag5,"\n"
 
 
 def listener():
@@ -111,12 +112,11 @@ def listener():
   rospy.spin()
 
 if __name__ == '__main__':
-
   Flag1 = False
   Flag2 = False
   Flag3 = False
   Flag4 = False
-  Flag5 = False
+  Flag5 = True
   settings = termios.tcgetattr(sys.stdin)
   rospy.init_node('joystick', anonymous=True)
   pubjoy01 = rospy.Publisher("/joy01", Joy, queue_size=10)
