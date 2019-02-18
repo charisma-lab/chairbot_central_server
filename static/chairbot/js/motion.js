@@ -8,11 +8,7 @@ var chairTwist02 = new ROSLIB.Topic({
 	name : '/twist02',
 	messageType : 'geometry_msgs/Twist'
 });
-var chairTwist03 = new ROSLIB.Topic({
-	ros : ros,
-	name : '/twist03',
-	messageType : 'geometry_msgs/Twist'
-});
+
 var chairTwist04 = new ROSLIB.Topic({
 	ros : ros,
 	name : '/twist04',
