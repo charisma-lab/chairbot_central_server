@@ -35,19 +35,6 @@ const RIGHT = 'RIGHT'
 const LEFT=  'LEFT'
 const STOP = 'STOP'
 
-const ROTATE90POSITIVE = [
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:50.0}},
-	{linear: {x: 0.0, y:0.0, z:0.0}, angular: {x: 0.0, y:0.0, z:0.0}},
-];
 
 function askToRunSequence(motion) {
 	console.log("The requested motion is:" + motion);
@@ -88,7 +75,4 @@ function turnRight() {
 }
 function turnLeft() {
 	askToRunSequence(LEFT);
-}
-function rotate90right() {
-	runSequence(ROTATE90POSITIVE);
 }
