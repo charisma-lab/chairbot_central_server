@@ -1,34 +1,46 @@
-var chairTwist01 = new ROSLIB.Topic({
+var requestMotion01 = new ROSLIB.Topic({
 	ros : ros,
-	name : '/twist01',
-	messageType : 'geometry_msgs/Twist'
+	name: '/requestMotion01',
+	messageType : 'std_msgs/String'
 });
-var chairTwist02 = new ROSLIB.Topic({
+var requestMotion02 = new ROSLIB.Topic({
 	ros : ros,
-	name : '/twist02',
-	messageType : 'geometry_msgs/Twist'
+	name: '/requestMotion02',
+	messageType : 'std_msgs/String'
 });
-
-var chairTwist04 = new ROSLIB.Topic({
-	ros : ros,
-	name : '/twist04',
-	messageType : 'geometry_msgs/Twist'
-});
-
 var requestMotion03 = new ROSLIB.Topic({
 	ros : ros,
 	name: '/requestMotion03',
-	messageType : 'std_msgs/String' 
+	messageType : 'std_msgs/String'
+});
+var requestMotion04 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestMotion04',
+	messageType : 'std_msgs/String'
 });
 
+var requestStop01 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestStop01',
+	messageType : 'std_msgs/String'
+});
+var requestStop02 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestStop02',
+	messageType : 'std_msgs/String'
+});
 var requestStop03 = new ROSLIB.Topic({
 	ros : ros,
 	name: '/requestStop03',
-	messageType : 'std_msgs/String' 
+	messageType : 'std_msgs/String'
+});
+var requestStop04 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestStop04',
+	messageType : 'std_msgs/String'
 });
 
-// Abrar: I'm using numbers 1= FORWARD, 3= BACKWARD, 2= RIGHT, 4= LEFT and 0=Stop
-
+/* These are the constants recognized by our python ros api including the packet replicator */
 const FORWARD = 'FORWARD'
 const BACKWARD = 'BACKWARD'
 const RIGHT = 'RIGHT'
