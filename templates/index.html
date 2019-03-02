@@ -16,10 +16,14 @@
   <!-- Custom fonts -->
   <!-- Custom styles for this template -->
   <link rel="stylesheet" href="{{ url_for('static', filename='chairbot/css/custom.css') }}">
-    <!-- Bootstrap core JavaScript -->
+  <!-- Bootstrap core JavaScript -->
   <script src="{{ url_for('static', filename='dist/jquery/jquery.min.js') }}"> </script>
   <script src="{{ url_for('static', filename='dist/js/bootstrap.bundle.min.js') }}"> </script>
-   <!-- robotwebtools scripts -->
+  <!-- scripts for touch interfaces -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='chairbot/touch/jquery.mobile-1.5.0-alpha.1.min.css') }}">
+  <script src="{{ url_for('static', filename='chairbot/touch/jquery-3.2.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='chairbot/touch/jquery.mobile-1.5.0-alpha.1.min.js') }}"></script>
+  <!-- robotwebtools scripts -->
   <script type="text/javascript" src="{{ url_for('static', filename='dist/js/eventemitter2.min.js')}}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='dist/js/roslib.js')}}"></script>
   <!-- Custom scripts -->
