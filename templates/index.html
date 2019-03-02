@@ -29,14 +29,15 @@
   <!-- Custom scripts -->
   <script src="{{ url_for('static', filename='chairbot/js/switch.js') }}"> </script>
   <script src="{{ url_for('static', filename='chairbot/js/motion.js') }}"> </script>
-</head>
+
+  </head>
 <body>
-	
+
   <img id="camera-frame" src="{{ url_for('video_feed') }}" style="min-height: 100%; min-width: 100%; object-fit: cover;">
 
 
 	<div class="content" style="position: fixed;bottom: 0; background: rgba(0, 0, 0, 0.5);color: #f1f1f1; width: 100%; padding: 20px;">
-		<h3> You are driving: 
+		<h3> You are driving:
           <span id="Toggle01"></span>
           <span id="Toggle02"></span>
           <span id="Toggle03"></span>
@@ -79,16 +80,16 @@
           <tbody>
             <tr>
               <td>
-                <button type="button" class="btn btn-primary btn-sm" onmousedown="forward()" onmouseup="stop()">Forward</button>
+                <button type="button" id='forward_button' class="navigation_buttons btn btn-primary btn-sm" >Forward</button>
               </td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm"  onmousedown="backward()" onmouseup="stop()">Backward</button>
+                <button type="button" id='backward_button' class="navigation_buttons btn btn-primary btn-sm">Backward</button>
               </td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm" onmousedown="turnRight()" onmouseup="stop()">Right</button>
+                <button type="button" id='right_button' class="navigation_buttons btn btn-primary btn-sm" >Right</button>
               </td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm" onmousedown="turnLeft()" onmouseup="stop()">Left</button>
+                <button type="button" id='left_button' class="navigation_buttons btn btn-primary btn-sm" >Left</button>
               </td>
               <td>
             </tr>
@@ -134,5 +135,17 @@
         </table>
         <hr> 
 	</div>
+  <script>
+
+  /* add the touch handler events to the navigation buttons */
+  $('#forward_button').bind("vmousedown", forward);
+  $('#backward_button').bind("vmousedown", backward);
+  $('#left_button').bind("vmousedown", turnLeft);
+  $('#right_button').bind("vmousedown", turnRight);
+
+  /* all navigatio buttons when released should stop */
+  $('.navigation_buttons').bind("vmouseup", stop)
+
+  </script>
 </body>
 </html>
