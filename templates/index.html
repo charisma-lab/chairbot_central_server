@@ -107,6 +107,20 @@
   /* all navigatio buttons when released should stop */
   $('.navigation_buttons').bind("vmouseup", stop)
 
+  /* advertise the topics for all chairs! */
+  for (var chair of $('.chair_selectors'))
+  {
+    //construct the topic name string by using hte chair id
+    requestMotion_topic_name = 'requestMotion' + chair.id.substr(-2)
+    requestStop_topic_name = 'requestStop' + chair.id.substr(-2)
+
+    console.log("Advertising the topic " + requestMotion_topic_name)
+    console.log("Advertising the topic " + requestStop_topic_name)
+    //actually get the topic object for that chair's requestMotionTopic and advertise
+    eval(requestMotion_topic_name).advertise()
+    eval(requestStop_topic_name).advertise()
+  }
+
   </script>
 </body>
 </html>
