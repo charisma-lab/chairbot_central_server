@@ -1,34 +1,46 @@
-var chairTwist01 = new ROSLIB.Topic({
+var requestMotion01 = new ROSLIB.Topic({
 	ros : ros,
-	name : '/twist01',
-	messageType : 'geometry_msgs/Twist'
+	name: '/requestMotion01',
+	messageType : 'std_msgs/String'
 });
-var chairTwist02 = new ROSLIB.Topic({
+var requestMotion02 = new ROSLIB.Topic({
 	ros : ros,
-	name : '/twist02',
-	messageType : 'geometry_msgs/Twist'
+	name: '/requestMotion02',
+	messageType : 'std_msgs/String'
 });
-
-var chairTwist04 = new ROSLIB.Topic({
-	ros : ros,
-	name : '/twist04',
-	messageType : 'geometry_msgs/Twist'
-});
-
 var requestMotion03 = new ROSLIB.Topic({
 	ros : ros,
 	name: '/requestMotion03',
-	messageType : 'std_msgs/String' 
+	messageType : 'std_msgs/String'
+});
+var requestMotion04 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestMotion04',
+	messageType : 'std_msgs/String'
 });
 
+var requestStop01 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestStop01',
+	messageType : 'std_msgs/String'
+});
+var requestStop02 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestStop02',
+	messageType : 'std_msgs/String'
+});
 var requestStop03 = new ROSLIB.Topic({
 	ros : ros,
 	name: '/requestStop03',
-	messageType : 'std_msgs/String' 
+	messageType : 'std_msgs/String'
+});
+var requestStop04 = new ROSLIB.Topic({
+	ros : ros,
+	name: '/requestStop04',
+	messageType : 'std_msgs/String'
 });
 
-// Abrar: I'm using numbers 1= FORWARD, 3= BACKWARD, 2= RIGHT, 4= LEFT and 0=Stop
-
+/* These are the constants recognized by our python ros api including the packet replicator */
 const FORWARD = 'FORWARD'
 const BACKWARD = 'BACKWARD'
 const RIGHT = 'RIGHT'
@@ -38,28 +50,68 @@ const STOP = 'STOP'
 
 function askToRunSequence(motion) {
 	console.log("The requested motion is:" + motion);
-	//encode the packet to make it processesable by ROS
+
+	//what chairs are we sending the data to ?
+	//figure out based on if they are checked or not
+	chairs = $('.chair_selectors')
 
 	if (motion == STOP) { //this is the STOP command
+		//encode the packet to make it processesable by ROS
 		requestStopPacket = new ROSLIB.Message({data: motion})
 		console.log("Stop Packet is " + requestStopPacket)
-		//send it to the right chair's topic
-		requestStop03.publish(requestStopPacket)
+
+		//send it to those chair's topic which were selected
+		for (var chair of chairs)
+		{
+			if (chair.checked == true)
+			{
+				console.log("Sending STOP to " + chair.id)
+				//construct the topic name by using hte chair id
+				requestStop_topic_name = 'requestStop' + chair.id.substr(-2)
+				//actually get the topic object for that chair's requestStopTopic and then publish
+				eval(requestStop_topic_name).publish(requestStopPacket);
+				//this is for testing
+				eval(requestStop_topic_name).subscribe(printData)
+			}
+			else
+			{
+				console.log("NOT Sending command to " + chair.id)
+			}
+		}
 	}
-	else { //this is one of the MOTION commands
+	else
+	{
+		//encode the packet to make it processesable by ROS
 		requestMotionPacket = new ROSLIB.Message({data: motion})
-		console.log("Motion Packet is " + requestMotionPacket)
-		//send it to the right chair's topic
-		requestMotion03.publish(requestMotionPacket);
+		console.log("Stop Packet is " + requestMotionPacket)
+
+		//send it to those chair's topic which were selected
+		for (var chair of chairs)
+		{
+			if (chair.checked == true)
+			{
+				console.log("Sending MOTION command to " + chair.id)
+				//construct the topic name by using hte chair id
+				requestMotion_topic_name = 'requestMotion' + chair.id.substr(-2)
+				//actually get the topic object for that chair's requestMotionTopic and then publish
+				eval(requestMotion_topic_name).publish(requestMotionPacket);
+				//this is for testing
+				eval(requestMotion_topic_name).subscribe(printData)
+			}
+			else
+			{
+				console.log("NOT Sending command to " + chair.id)
+			}
+		}
+
 	}
 }
 
 function printData(message) {
+	//TODO: Send this to the ROS logging facility
 	console.log("Received msg which said " + message.data);
 }
 
-requestMotion03.subscribe(printData)
-requestStop03.subscribe(printData)
 
 function forward() {
 	askToRunSequence(FORWARD);
