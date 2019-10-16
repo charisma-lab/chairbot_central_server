@@ -1,6 +1,5 @@
 # SOURCE: https://blog.miguelgrinberg.com/post/video-streaming-with-flask
 
-
 import sys
 from flask import Flask, render_template, Response
 from templates.tracking_markers_class import TrackingCamera

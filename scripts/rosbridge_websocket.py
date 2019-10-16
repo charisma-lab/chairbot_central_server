@@ -17,7 +17,7 @@ from sensor_msgs.msg import Joy
 
 msg = """
 **Connection successful**
-Now you are reading from both UI and Publishing to the neato!
+Now you are reading from the UI and Publishing to the neato!
 ---------------------------
 use the UI to move the chair around:
 """
