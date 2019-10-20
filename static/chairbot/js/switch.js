@@ -51,9 +51,13 @@ var chairOff = new ROSLIB.Message({
 (function(){
   // Initialization: Set all chairs to be OFF
   chair01.publish(chairOff);
+  //document.getElementById("Switch01").checked = false;
   chair02.publish(chairOff);
+  //document.getElementById("Switch02").checked = false;
   chair03.publish(chairOff);
+  //document.getElementById("Switch03").checked = false;
   chair04.publish(chairOff);
+  //document.getElementById("Switch04").checked = false;
 })();
 
 function toggle_chair01(){
