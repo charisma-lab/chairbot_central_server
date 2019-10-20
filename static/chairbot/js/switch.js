@@ -42,14 +42,15 @@ var chair04 = new ROSLIB.Topic({
 });
 
 var chairOn = new ROSLIB.Message({
-  data: 1
+  data: 1 //true
 });
 var chairOff = new ROSLIB.Message({
-  data: 0
+  data: 0 //false
 });
 
+
 (function(){
-  // Initialization: Set all chairs to be OFF
+  // Initialization: Set all chairs to be OFF. This means that everytime the webpage is loaded all the chairs ar OFF
   chair01.publish(chairOff);
   //document.getElementById("Switch01").checked = false;
   chair02.publish(chairOff);
