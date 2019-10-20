@@ -61,107 +61,164 @@ var chairOff = new ROSLIB.Message({
   //document.getElementById("Switch04").checked = false;
 })();
 
-function toggle_chair01(){
+//Turn chair#1 ON by toggling if the switch is checked or not
+ function toggle_chair01(){
   var checkBox = document.getElementById("Switch01");
-  var text = document.getElementById("Toggle01");
   if (checkBox.checked == true){
     chair01.publish(chairOn);
-    text.innerHTML = "#1,";
-      if (document.getElementById("Switch02").checked == true 
-        &&
-        document.getElementById("Switch03").checked == true
-        &&
-        document.getElementById("Switch04").checked == true)
-        document.getElementById("SwitchAll").checked=true;
+    toggle_chair01_text();
+    //toggle other checkboxes
+    makeSelectAllIntuitive();
+
   } else {
     chair01.publish(chairOff);
-     text.innerHTML = "";
-    document.getElementById("SwitchAll").checked=false;
+    toggle_chair01_text();
+   
+    // if any of the chairs are unselected, uncheck select all.
+    document.getElementById('SwitchAll').checked = false;
   }
 }
+//Give a textual feedback when chair#1 is ON/OFF by checking if the switch is checked or not
+function toggle_chair01_text(){
+	var checkBox = document.getElementById("Switch01");
+	var text = document.getElementById("Toggle01");
+	  if (checkBox.checked == true){
+    text.innerHTML = "Duck,";
+  } else {
+     text.innerHTML = "";
+  }
+}
+
 
 function toggle_chair02(){
   var checkBox = document.getElementById("Switch02");
-  var text = document.getElementById("Toggle02");
   if (checkBox.checked == true){
     chair02.publish(chairOn);
-    text.innerHTML = " #2,";
-      if (document.getElementById("Switch01").checked == true 
-        &&
-        document.getElementById("Switch03").checked == true
-        &&
-        document.getElementById("Switch04").checked == true)
-        document.getElementById("SwitchAll").checked=true;
+    toggle_chair02_text();
+    //toggle other checkboxes
+    makeSelectAllIntuitive();
+
   } else {
     chair02.publish(chairOff);
-    text.innerHTML = "";
-    document.getElementById("SwitchAll").checked=false;
+    toggle_chair02_text();
+    // if any of the chairs are unselected, uncheck select all.
+    document.getElementById('SwitchAll').checked = false;
   }
 }
 
+//Give a textual feedback when chair#2 is ON/OFF by checking if the switch is checked or not
+function toggle_chair02_text(){
+	var checkBox = document.getElementById("Switch02");
+	var text = document.getElementById("Toggle02");
+	  if (checkBox.checked == true){
+    text.innerHTML = "Beaver,";
+  } else {
+     text.innerHTML = "";
+  }
+}
+
+
 function toggle_chair03(){
   var checkBox = document.getElementById("Switch03");
-  var text = document.getElementById("Toggle03");
   if (checkBox.checked == true){
     chair03.publish(chairOn);
-    text.innerHTML = " #3,";
-      if (document.getElementById("Switch01").checked == true 
-        &&
-        document.getElementById("Switch02").checked == true
-        &&
-        document.getElementById("Switch04").checked == true)
-        document.getElementById("SwitchAll").checked=true;
+    toggle_chair03_text();
+    //toggle other checkboxes
+    makeSelectAllIntuitive();
+
   } else {
     chair03.publish(chairOff);
-    text.innerHTML = "";
-    document.getElementById("SwitchAll").checked=false;
+    toggle_chair03_text();
+    // if any of the chairs are unselected, uncheck select all.
+    document.getElementById('SwitchAll').checked = false;
   }
 }
+
+//Give a textual feedback when chair#3 is ON/OFF by checking if the switch is checked or not
+function toggle_chair03_text(){
+	var checkBox = document.getElementById("Switch03");
+	var text = document.getElementById("Toggle03");
+	  if (checkBox.checked == true){
+    text.innerHTML = "Cat,";
+  } else {
+     text.innerHTML = "";
+  }
+}
+
+
 function toggle_chair04(){
   var checkBox = document.getElementById("Switch04");
-  var text = document.getElementById("Toggle04");
   if (checkBox.checked == true){
     chair04.publish(chairOn);
-    text.innerHTML = " #4";
-      if (document.getElementById("Switch01").checked == true 
-        &&
-        document.getElementById("Switch02").checked == true
-        &&
-        document.getElementById("Switch03").checked == true)
-        document.getElementById("SwitchAll").checked=true;
+    toggle_chair04_text();
+   	//toggle other checkboxes
+    makeSelectAllIntuitive();
   } else {
     chair04.publish(chairOff);
-    text.innerHTML = "";
-    document.getElementById("SwitchAll").checked=false;
+    toggle_chair04_text();
+    // if any of the chairs are unselected, uncheck select all.
+    document.getElementById('SwitchAll').checked = false;
   }
 }
+
+//Give a textual feedback when chair#4 is ON/OFF by checking if the switch is checked or not
+function toggle_chair04_text(){
+	var checkBox = document.getElementById("Switch04");
+	var text = document.getElementById("Toggle04");
+	  if (checkBox.checked == true){
+    text.innerHTML = "Yzma,";
+  } else {
+     text.innerHTML = "";
+  }
+}
+
 function toggle_all(){
-    var checkBox = document.getElementById("SwitchAll");
-  if (checkBox.checked == true){
-    chair01.publish(chairOn);
+  var checkBox  = document.getElementById("SwitchAll"); 
+  if (checkBox.checked == true){ //check the checkbox
+  	chair01.publish(chairOn);
     document.getElementById("Switch01").checked = true;
-    toggle_chair01();
+    document.getElementById("Toggle01").innerHTML = "Duck,";
     chair02.publish(chairOn);
     document.getElementById("Switch02").checked = true;
-    toggle_chair02();    
+    document.getElementById("Toggle02").innerHTML = " Beaver,";
     chair03.publish(chairOn);
     document.getElementById("Switch03").checked = true;
-    toggle_chair03();
+    document.getElementById("Toggle03").innerHTML = " Cat,";
     chair04.publish(chairOn);
     document.getElementById("Switch04").checked = true;
-    toggle_chair04();
-  } else {
-    chair01.publish(chairOff);
+    document.getElementById("Toggle04").innerHTML = " Yzma";
+    
+  } else { //uncheck the checkbox
+  	chair01.publish(chairOff);
     document.getElementById("Switch01").checked = false;
-    toggle_chair01();
+    document.getElementById("Toggle01").innerHTML = "";
     chair02.publish(chairOff);
     document.getElementById("Switch02").checked = false;
-    toggle_chair02();
+    document.getElementById("Toggle02").innerHTML = "";
     chair03.publish(chairOff);
     document.getElementById("Switch03").checked = false;
-    toggle_chair03();
+    document.getElementById("Toggle03").innerHTML = "";
     chair04.publish(chairOff);
     document.getElementById("Switch04").checked = false;
-    toggle_chair04();
+    document.getElementById("Toggle04").innerHTML = "";
+    
   }
+}
+
+
+// if all of the chairs are selected, selected all 
+function makeSelectAllIntuitive()
+{
+
+	if (
+    document.getElementById('Switch01').checked == true
+    &&
+    document.getElementById('Switch02').checked == true
+    &&
+    document.getElementById('Switch03').checked == true
+    &&
+    document.getElementById('Switch04').checked == true
+    ){
+    	document.getElementById('SwitchAll').checked = true;
+    }
 }

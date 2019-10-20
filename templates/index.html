@@ -20,7 +20,7 @@
   <script src="{{ url_for('static', filename='dist/jquery/jquery.min.js') }}"> </script>
   <script src="{{ url_for('static', filename='dist/js/bootstrap.bundle.min.js') }}"> </script> -->
   <!-- scripts for touch interfaces -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='chairbot/touch/jquery.mobile-1.5.0-alpha.1.min.css') }}">
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='chairbot/touch/jquery.mobile-1.5.0-alpha.1.min.css') }}"> -->
   <script src="{{ url_for('static', filename='chairbot/touch/jquery-3.2.1.min.js') }}"></script>
   <script src="{{ url_for('static', filename='chairbot/touch/jquery.mobile-1.5.0-alpha.1.min.js') }}"></script>
   <!-- robotwebtools scripts -->
@@ -47,31 +47,31 @@
           <tbody>
             <tr>
               <td>
-                <label class="switch" style="">
-                  <input class='chair_selectors' type="checkbox" id="Switch01" onclick="toggle_chair01()" style="">
-                  <span class="slider round" style="padding-right:1em">Chair 1</span>
+                <label class="switch" style="background: green; color: white">
+                  <input class='chair_selectors' type="checkbox" id="Switch01" onclick="toggle_chair01()" style=""/>
+                  <span class="slider round" style="padding-right:1em">Duck</span>
                 </label>
               </td>
               <td>
-                <label class="switch">
+                <label class="switch" style="background: orange; color: white">
                   <input class='chair_selectors' type="checkbox" id="Switch02" onclick="toggle_chair02()">
-                  <span class="slider round" style="padding-right:1em">Chair 2</span>
+                  <span class="slider round" style="padding-right:1em">Beaver</span>
                 </label>
               </td>
               <td>
-                <label class="switch">
+                <label class="switch" style="background: black; color: white">
                   <input class='chair_selectors' type="checkbox" id="Switch03" onclick="toggle_chair03()">
-                  <span class="slider round" style="padding-right:1em">Chair 3</span>
+                  <span class="slider round" style="padding-right:1em">Cat</span>
                 </label>
               </td>
               <td>
-                <label class="switch" style="">
+                <label class="switch" style="background: purple; color: white">
                   <input class='chair_selectors' type="checkbox" id="Switch04" onclick="toggle_chair04()" style="">
-                  <span class="slider round" style="padding-right:1em">Chair 4</span>
+                  <span class="slider round" style="padding-right:1em">Yzma</span>
                 </label>
               </td>
               <td class="checkbox">
-              	<label><input type="checkbox" id="SwitchAll" onclick="toggle_all()"> Select All Chairs</label>
+              	<label><input type="checkbox" id="SwitchAll" onclick="toggle_all()"> Select All</label>
               </td>
             </tr>
           </tbody>
@@ -95,49 +95,10 @@
             </tr>
           </tbody>
         </table>
-        <!-- <span>Right</span> -->
-        <!-- <table>
-          <tbody>
-            <tr>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate90right()"> 90</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate180right()">180</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate270right()">270</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate360right()">360</button>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
-        <!-- <span>Left</span> -->
-        <!-- <table>
-          <tbody>
-            <tr>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate90left()"> 90</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate180left()">180</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate270left()">270</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" onclick="rotate360left()">360</button>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
-        <!-- <hr>  -->
 	</div>
   <script>
 
-  /* add the touch handler events to the navigation buttons */
+  /* add the touch handler events to the navigation buttons to call the resepctive motion function*/
   $('#forward_button').bind("vmousedown", forward);
   $('#backward_button').bind("vmousedown", backward);
   $('#left_button').bind("vmousedown", turnLeft);
